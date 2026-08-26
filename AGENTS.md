@@ -1,36 +1,30 @@
-# Swiss P Map — Agent Context
+# EnergyCalendar — Agent Context & Quickstart
 
-> Ezt olvassa minden agent belépéskor (Hermes, Gemini CLI, Claude, GPT, Codex, agy...). Rövid — 30 sor.
+> Ezt olvassa minden AI Agent belépéskor (Hermes, Gemini CLI, Claude, Codex, Antigravity, GPT...). Rövid eligazítás — 30 sor.
 
 ## Mi ez
-**Swiss P Map** — svájci P-térkép projekt (induló: stratégia + docs; a stack a kickoff ADR-ben dől el). Még nincs kód — az első research → ADR → scaffold lánc hozza létre.
+**EnergyCalendar (Energia-Ritmus & Heti Rutin-Koreográfus)** — Biológiai cirkadián ritmusra és kognitív terhelésre optimalizált feladat- és időszervező rendszer (v1.2.0). 
+- **Stack:** Python 3.11+ (FastAPI, Pydantic v2, Uvicorn), Modern Vanilla JS + Canvas + Web Audio API SPA (0 külső JS függőség), Pytest + Playwright.
 
-## Állapot
-2026-08-25: bootstrap. Template módszertan átmásolva AI_prod_engine-ből. Első feladat: `docs/research/` kickoff + `ADR-001`.
+## Jelenlegi Állapot (v1.2.0)
+- **76/76 teszt zöld (100% PASS):** 20 Black-Box E2E teszt + 56 Unit teszt.
+- **Élő szerver:** `http://127.0.0.1:8888` (Swagger: `/docs`).
+- **Pipeline:** `.agent-pipeline/` (SPEC-001..004 lezárva a `manifest.json`-ban).
 
 ## Hol mi van
-- `METHODOLOGY.md` — kódolási/API/git/teszt/doc szabályok (általános, érvényes)
-- `workflows/principles.md` — workdir, validációs scope, szerepek
-- `docs/decisions/ADR-*.md` — minden döntés 1 oldal (template: ADR-000-template.md)
-- `docs/research/` — kutatások (max 5 oldal, comparison table)
-- `docs/competitor/` — heti scout output
-- `tests/` — tesztek (keretrendszer: amit az első ADR választ)
+- `docs/HANDOVER.md` — **Teljes átadási dokumentáció, modulok leírása és következő feladatok (Start here!)**
+- `docs/ARCHITECTURE.md` — Rendszerarchitektúra és komponens gráf
+- `docs/decisions/ADR-*.md` — Döntési naplók (ADR-001..003)
+- `docs/stories/US-*.md` — Felhasználói történetek és BDD elfogadási kritériumok
+- `src/` — Backend alkalmazás (`models`, `services`, `api`)
+- `frontend/` — Egyoldalas biolumineszcens webalkalmazás (`index.html`, `app.js`, `style.css`)
+- `tests/` & `.agent-pipeline/03_e2e_suites/` — Tesztcsomagok
 
-## Szabályok (röviden)
-- Döntés nélkül ne kódolj: research → ADR → utána scaffold
-- Minden feature: előbb teszt-ötlet, aztán kód (RED→GREEN bármilyen kerettel)
-- Max 400 sor/file; type hints + docstring ahol értelmes
-- Commit: `<scope>: <leírás>` formátum (lásd METHODOLOGY 4. fejezet)
+## Alapszabályok (Kötelező)
+1. **Döntés nélkül ne kódolj:** Kutatás $\rightarrow$ ADR $\rightarrow$ Story $\rightarrow$ Spec $\rightarrow$ RED E2E teszt $\rightarrow$ Kód $\rightarrow$ GREEN teszt $\rightarrow$ Manifest frissítés.
+2. **Kódszabályok:** Max 400 sor/fájl; szigorú típusjelölések (`type hints`) és docstringek.
+3. **Tesztelés:** Minden új végponthoz és logikához írj Black-Box E2E tesztet (`pytest -v`).
+4. **Git konvenció:** `<scope>: <leírás>` commit formátum.
 
-## Tudás forrása (prioritás)
-1. `workflows/principles.md` + ez a file
-2. `docs/decisions/ADR-*.md`
-3. Kódgráf (ha indexelve) / `git log`
-
-## Módszertan (kötelező)
-- **Evolúciós rendszer (master):** `docs/methodology/EVOLUTIONARY-SYSTEM.md` — 7 fázis, behavior-first, 100% E2E, stop-gate
-- **Browser Helper függelék:** `docs/methodology/BROWSER-HELPER-MCP.md` — valós endpointok, 6 képességcsoport, tenant izoláció
-- **Deep research runbookok:** `docs/research/prompts/` (hermes-miner, gemini-miner, agy-scorer, evaluator)
-
-## LLM-függetlenség
-A módszertan bármelyik LLM-mel megy. A szerepek funkciók, nem eszközök. Kötelező minimum: dokumentálj (`docs/`) + tesztelj. Több részlet: `AGENTS.md` az AI_prod_engine-ben minta.
+## Következő Sprint Ötletek (Roadmap)
+Lásd: `docs/HANDOVER.md` (6. Fejezet) — Wearable HRV/Oura szinkron, Heti makro-ritmus nézet, Hangos/WebPush értesítések.
