@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests", ".agent-pipeline/03_e2e_suites"]
+asyncio_mode = "auto"

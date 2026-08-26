@@ -1,0 +1,48 @@
+{
+  "tasks": {
+    "SPEC-001": {
+      "title": "Cirkadián Energia-Ritmus és Feladat-Koreográfus Backend",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-001-energy-choreographer-backend.md",
+      "story_path": "docs/stories/US-001-energy-choreographer.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_001.py",
+      "adr_path": "docs/decisions/ADR-001-energy-calendar-architecture.md",
+      "research_path": "docs/research/2026-08-26-circadian-energy-calendar-deep-dive.md",
+      "last_updated": "2026-08-26T17:34:00Z"
+    },
+    "SPEC-002": {
+      "title": "Energia-Ritmus & Heti Rutin-Koreográfus Frontend és Web Alkalmazás",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-002-energy-choreographer-frontend-ui.md",
+      "story_path": "docs/stories/US-001-energy-choreographer.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_002_gui.py",
+      "adr_path": "docs/decisions/ADR-001-energy-calendar-architecture.md",
+      "research_path": "docs/research/2026-08-26-circadian-energy-calendar-deep-dive.md",
+      "last_updated": "2026-08-26T17:57:00Z"
+    },
+    "SPEC-003": {
+      "title": "Cirkadián Power Suite — Re-flow, Koffein és Zen Fókusz",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-003-circadian-power-suite.md",
+      "story_path": "docs/stories/US-002-circadian-power-suite.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_003_power_suite.py",
+      "adr_path": "docs/decisions/ADR-002-circadian-power-suite.md",
+      "research_path": "docs/research/2026-08-26-circadian-feature-expansion-deep-dive.md",
+      "last_updated": "2026-08-26T18:29:00Z"
+    },
+    "SPEC-004": {
+      "title": "Napi Lezárás, Naptár-Szinkron és Kognitív Feladatbontás",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-004-advanced-productivity-suite.md",
+      "story_path": "docs/stories/US-003-advanced-productivity-suite.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_004.py",
+      "adr_path": "docs/decisions/ADR-003-shutdown-calendar-deconstruction.md",
+      "research_path": "docs/competitor/2026-W35-circadian-productivity-scan.md",
+      "last_updated": "2026-08-26T18:40:00Z"
+    }
+  }
+}
