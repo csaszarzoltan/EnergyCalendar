@@ -1,312 +1,364 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Energia-Ritmus & Heti Rutin-Koreográfus</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energia-Ritmus & Heti Rutin-Koreográfus (v1.6.0)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="app-wrapper">
-    <!-- Header -->
+<body class="theme-cyber-dark">
+  <div class="ambient-orb orb-primary"></div>
+  <div class="ambient-orb orb-secondary"></div>
+  <div class="ambient-orb orb-tertiary"></div>
+
+  <div class="app-layout">
+    <!-- Header: Sci-Fi Holographic Command Center -->
     <header class="app-header">
       <div class="header-brand">
-        <div class="logo-icon">⚡</div>
+        <div class="brand-badge-glow"><span class="brand-icon">⚡</span></div>
         <div class="brand-text">
-          <h1 role="heading" class="logo-title">Energia-Ritmus & Heti Rutin-Koreográfus</h1>
-          <p class="logo-subtitle">Cirkadián Intelligencia & Kognitív Terhelés Koreográfus</p>
+          <div class="brand-title-wrap">
+            <h1 class="brand-title">Energia-Ritmus & Heti Rutin-Koreográfus</h1>
+            <span class="brand-version-badge">v1.6.0 AI Suite</span>
+          </div>
+          <p class="brand-subtitle">Cirkadián Intelligencia, Időgép Szimuláció & Kognitív Terhelés Koreográfus</p>
         </div>
       </div>
 
-      <!-- Cognitive Heatmap / Debt Meter -->
-      <div class="header-center">
-        <div id="cognitive-debt-meter" data-testid="cognitive-debt-meter" class="cognitive-meter-card">
+      <div class="header-controls">
+        <div id="cognitive-debt-meter" class="energy-debt-meter-card" title="Napi kognitív terheltség és cirkadián kapacitás aránya">
           <div class="meter-header">
-            <span class="meter-title">🧠 Kognitív Telítettség</span>
-            <span id="meter-percent" class="meter-percent">0%</span>
+            <span class="meter-label">🧠 Kognitív Telítettség</span>
+            <span id="meter-percent" class="meter-val text-cyan">0%</span>
           </div>
-          <div class="meter-track">
-            <div id="meter-bar" class="meter-bar" style="width: 0%;"></div>
+          <div class="meter-bar-track">
+            <div id="meter-bar" class="meter-bar-fill" style="width: 0%;"></div>
           </div>
-          <div class="meter-details">
-            <span id="meter-load-stats">Kapacitás: 0 | Igény: 0</span>
+          <div class="meter-stats-row">
+            <span id="meter-load-stats" class="meter-sub">Kapacitás: -- | Igény: --</span>
           </div>
         </div>
+
         <div id="energy-debt-badge" class="energy-debt-badge badge-optimal">
           <span class="badge-dot"></span>
-          <span id="debt-badge-text">Optimális Energiamérleg</span>
+          <span id="debt-badge-text">✓ Optimális energiamérleg</span>
         </div>
-      </div>
 
-      <!-- Header Controls: Presets & Profile Modal Toggle -->
-      <div class="header-actions">
-        <div class="preset-group" role="group" aria-label="Chronotype Presets">
-          <button type="button" class="preset-btn" id="preset-lark" data-preset="lark">Pacsirta (06:00)</button>
-          <button type="button" class="preset-btn active" id="preset-standard" data-preset="standard">Standard (07:00)</button>
-          <button type="button" class="preset-btn" id="preset-night-owl" data-preset="night-owl">Éjjeli bagoly (09:00)</button>
+        <div class="profile-quick-switch">
+          <button type="button" class="preset-btn active" data-preset="standard">Kiegyensúlyozott</button>
+          <button type="button" class="preset-btn" data-preset="lark">Pacsirta (Korai)</button>
+          <button type="button" class="preset-btn" data-preset="night-owl">Bagoly (Késői)</button>
         </div>
-        <button type="button" id="btn-toggle-profile" class="btn-secondary" title="Cirkadián profil szerkesztése">⚙️ Profil</button>
+
+        <button type="button" id="btn-toggle-profile" class="btn-icon" title="Cirkadián profil testreszabása">
+          <span>⚙ Profil</span>
+        </button>
       </div>
     </header>
 
-    <!-- Power Suite Controls Toolbar (SPEC-003 & SPEC-004) -->
-    <div class="power-suite-toolbar">
-      <div class="sleep-slider-container">
-        <span class="toolbar-icon">🌙</span>
-        <label for="sleep-quality-slider" id="sleep-quality-label" class="sleep-label">Alvásminőség / Vitalitás: 100%</label>
-        <input type="range" id="sleep-quality-slider" min="30" max="120" value="100" step="5" class="sleep-slider" title="Alvásminőség beállítása (30% - 120%)">
+    <!-- Grouped Ergonomic Control Bar -->
+    <div class="control-ribbon-dock">
+      <div class="ribbon-group">
+        <span class="ribbon-label">⚡ Gyors Akciók</span>
+        <button type="button" id="btn-reflow-now" class="btn btn-primary glow-reflow" title="Nap újrahangolása a hátralévő időre">🌊 Nap Újrahangolása (Reflow)</button>
+        <button type="button" id="btn-toggle-caffeine" class="btn btn-secondary btn-caffeine active" title="Koffein cutoff időablak megjelenítése">☕ Koffein Sáv</button>
+        <button type="button" id="btn-export-ics" class="btn btn-secondary" title="Naptár exportálása (.ics)">📤 Export (.ics)</button>
+        <button type="button" id="btn-import-ics" class="btn btn-secondary" title="Naptár importálása (.ics)">📥 Import (.ics)</button>
       </div>
-      <div class="power-suite-actions">
-        <button type="button" id="btn-toggle-caffeine" class="btn-secondary btn-caffeine active" title="Koffein Zóna be/ki">☕ Koffein Zóna</button>
-        <button type="button" id="btn-import-ics" class="btn-secondary" title="Naptár importálása (.ics)">📥 Naptár Import (.ics)</button>
-        <button type="button" id="btn-export-ics" class="btn-secondary" title="Naptár exportálása (.ics)">📤 Naptár Export (.ics)</button>
-        <button type="button" id="btn-reflow-now" class="btn-primary btn-reflow glow-reflow" title="Nap újrahangolása">🌊 Újrahangolás</button>
-        <button type="button" id="btn-open-shutdown" class="btn-accent btn-shutdown" title="Cirkadián Napi Lezárás">🌙 Napi Lezárás</button>
+
+      <div class="ribbon-group">
+        <span class="ribbon-label">🧬 Biohack Modulok</span>
+        <button type="button" id="btn-open-weekly-matrix" class="btn btn-secondary" title="Heti Makro-Ritmus Mátrix (7 nap)">📅 Heti Mátrix</button>
+        <button type="button" id="btn-open-biometrics" class="btn btn-secondary" title="Biometrikus Szenzor Szinkron (HRV)">🫀 Biometria</button>
+        <button type="button" id="btn-open-context-tax" class="btn btn-secondary" title="Kontextusváltási Adó & Batching">⚡ Kontextus Adó</button>
+        <button type="button" id="btn-open-jetlag" class="btn btn-secondary" title="Jetlag & Időzóna Átállási Terv">✈ Jetlag</button>
+        <button type="button" id="btn-open-workout-space" class="btn btn-secondary" title="Cirkadián Edzés & Tér Audit">🏋️ Edzés & Tér</button>
+        <button type="button" id="btn-open-analytics" class="btn btn-accent" title="Cirkadián Analitika & Trendek">📊 Analitika</button>
+        <button type="button" id="btn-open-shutdown" class="btn btn-secondary" title="Napi lezárási rituálé és alvásfelkészítés">🌙 Esti Lezárás</button>
+      </div>
+
+      <div class="ribbon-slider-item">
+        <label id="sleep-quality-label" for="sleep-quality-slider">🌙 Vitalitás: 100%</label>
+        <input type="range" id="sleep-quality-slider" min="30" max="100" value="100" step="5" />
       </div>
     </div>
 
-    <!-- Main Section -->
-    <main class="app-main">
-      <!-- NLP Quick Task Input Bar -->
-      <section class="task-input-section">
-        <div class="input-bar-container">
-          <div class="input-icon">✨</div>
-          <input type="text" id="quick-task-input" name="quick_task_input" placeholder="Pl. Kódolás: új auth modul 90 perc" autocomplete="off">
-          <button type="button" id="btn-add-task" name="btn_add_task" class="btn-primary"><span>+ Hozzáadás</span></button>
-          <button type="button" id="btn-auto-schedule" class="btn-accent glow-pulse"><span>⚡ Automatikus Koreográfia</span></button>
-        </div>
-        <div class="quick-examples">
-          <span class="examples-label">Gyors példák:</span>
-          <button type="button" class="example-chip" data-example="Kódolás: új auth modul 90 perc">💻 Kódolás (90m)</button>
-          <button type="button" class="example-chip" data-example="Architektúra UI vázlat 60 perc">🎨 UI vázlat (60m)</button>
-          <button type="button" class="example-chip" data-example="Email és számlák 45 perc">📋 Admin (45m)</button>
-          <button type="button" class="example-chip" data-example="Kávészünet és séta 20 perc">☕ Pihenő (20m)</button>
-        </div>
-      </section>
+    <!-- NLP Task Input Section -->
+    <section class="task-input-section" aria-label="Feladat rögzítése">
+      <div class="input-bar-container">
+        <span class="input-icon">✨</span>
+        <input type="text" id="quick-task-input" placeholder="Írd be a feladatot természetes nyelven (pl. 'Nehéz algoritmus tervezés 90 perc', 'Email megválaszolása 30 perc')..." autocomplete="off" />
+        <button type="button" id="btn-add-task" class="btn btn-primary">➕ Hozzáadás</button>
+        <button type="button" id="btn-auto-schedule" class="btn btn-accent glow-magenta">⚡ Automatikus Koreografálás</button>
+      </div>
+      <div class="quick-examples">
+        <span class="examples-label">Gyors minták:</span>
+        <button type="button" class="example-chip" data-example="Architektúra áttekintés 90 perc mélymunka">🧠 Architektúra (90m)</button>
+        <button type="button" class="example-chip" data-example="UI Vázlat Készítés 60 perc kreatív">💡 UI Készítés (60m)</button>
+        <button type="button" class="example-chip" data-example="Email és admin 30 perc">📋 Admin (30m)</button>
+        <button type="button" class="example-chip" data-example="Kávé és séta 15 perc regeneráció">🔋 Regeneráció (15m)</button>
+      </div>
+    </section>
 
-      <!-- Workspace Grid -->
-      <div class="workspace-grid">
-        <!-- Left: Energy Wave & Interactive Timeline -->
-        <section class="timeline-section">
-          <div class="section-header">
-            <div class="section-title-wrap">
-              <h2 class="section-title">🌊 Cirkadián Energia-Hullám & Idővonal</h2>
-              <span class="section-tag">06:00 – 23:00 Aktív Idősáv</span>
+    <!-- Main Workspace Grid -->
+    <main class="main-workspace-grid">
+      <!-- Left Column: Wave + Multi-Lane Timeline + Backlog -->
+      <div class="timeline-column">
+        <!-- Interactive Circadian Wave & Timeline Surface -->
+        <section class="wave-timeline-wrapper" aria-label="Energiahullám és Napi Idővonal">
+          <div class="wave-header">
+            <div class="wave-title-group">
+              <h2 class="section-title">🌊 Cirkadián Energiahullám & Napirend</h2>
+              <span class="time-range-badge">06:00 — 23:00 Aktív Idősáv</span>
             </div>
-            <div class="zone-legend">
-              <span class="legend-item"><span class="legend-dot dot-peak"></span> Csúcs (Peak ≥ 7.5)</span>
-              <span class="legend-item"><span class="legend-dot dot-moderate"></span> Kiegyensúlyozott</span>
-              <span class="legend-item"><span class="legend-dot dot-dip"></span> Mélypont (Dip ≤ 4.0)</span>
-              <span class="legend-item"><span class="legend-dot dot-recovery"></span> Regeneráció</span>
-              <span class="legend-item"><span class="legend-dot dot-caffeine"></span> Koffein Zóna (☕)</span>
+
+            <!-- Graph Quick Tuner Bar -->
+            <div class="graph-tuner-toolbar">
+              <span class="tuner-title">🎛️ Gráf Módosítás:</span>
+              <button type="button" id="btn-tune-peak1" class="tuner-btn" title="Délelőtti csúcs kinyújtása +30 perccel">+Délelőtt Csúcs</button>
+              <button type="button" id="btn-tune-peak2" class="tuner-btn" title="Délutáni csúcs kinyújtása +30 perccel">+Délután Csúcs</button>
+              <button type="button" id="btn-tune-dip" class="tuner-btn" title="Ebéd utáni mélypont eltolása">+Dip Eltolás</button>
+              <button type="button" id="btn-tune-reset" class="tuner-btn tuner-reset" title="Profil visszaállítása">Alaphelyzet</button>
             </div>
           </div>
 
-          <!-- Wave + Timeline Surface -->
-          <div class="wave-timeline-wrapper">
-            <div id="timeline-time-markers" class="timeline-time-markers"></div>
-            <div class="canvas-container">
-              <canvas id="energy-wave-canvas" data-testid="energy-wave-canvas"></canvas>
-              <div id="curve-tooltip" class="curve-tooltip hidden"></div>
+          <!-- TIME MACHINE HUD BAR (v1.6.0) -->
+          <div class="time-machine-hud-bar">
+            <div class="tm-playback-controls">
+              <button type="button" id="btn-tm-reset" class="tm-btn" title="Ugrás a reggeli kezdésre (06:00)">⏮️ 06:00</button>
+              <button type="button" id="btn-tm-play" class="tm-btn tm-play-btn" title="Cirkadián nap-szimuláció indítása">▶ Szimuláció Indítása</button>
+              <button type="button" id="btn-tm-speed" class="tm-btn" title="Szimulációs sebesség váltása (1x, 5x, 15x)">⏩ 5x Sebesség</button>
+              <button type="button" id="btn-tm-chime" class="tm-btn active" title="Web Audio Neuro-Chime zónaváltó hangjelzés">🔔 Neuro-Chime: BE</button>
             </div>
-            <div id="tasks-timeline" class="tasks-timeline"></div>
+            <div class="tm-telemetry-badge">
+              <span class="tm-clock-icon">⏰</span>
+              <span id="tm-sim-clock" class="tm-clock-val">09:30</span>
+              <span id="tm-sim-zone" class="tm-zone-badge zone-peak">🚀 FÓKUSZCSÚCS (⚡ 8.8/10)</span>
+            </div>
           </div>
 
-          <!-- Backlog Dock -->
-          <div class="backlog-dock-section">
-            <div class="backlog-header">
-              <div class="backlog-title-wrap">
-                <h3 class="backlog-title">🎒 Feladat Gyűjtő Dokk (Backlog)</h3>
-                <span id="backlog-count" class="backlog-count">0 feladat</span>
-              </div>
-              <span class="backlog-hint">💡 60m+ feladatoknál kattints a ⚡ Bontás gombra a kognitív szeleteléshez!</span>
+          <div class="wave-legend">
+            <span class="legend-item"><span class="legend-dot dot-peak"></span> Csúcs (Peak &ge; 7.5)</span>
+            <span class="legend-item"><span class="legend-dot dot-moderate"></span> Kiegyensúlyozott</span>
+            <span class="legend-item"><span class="legend-dot dot-dip"></span> Mélypont (Dip &le; 4.0)</span>
+            <span class="legend-item"><span class="legend-dot dot-recovery"></span> Regeneráció</span>
+            <span class="legend-item"><span class="legend-dot dot-caffeine"></span> Koffein Zóna (☕)</span>
+          </div>
+
+          <!-- Time Markers (06:00 - 23:00) -->
+          <div id="timeline-time-markers" class="timeline-time-markers"></div>
+
+          <!-- Canvas with Scanning Laser Needle -->
+          <div class="canvas-container">
+            <canvas id="energy-wave-canvas"></canvas>
+            <div id="curve-tooltip" class="curve-tooltip hidden"></div>
+            <!-- Laser scanning line -->
+            <div id="simulation-laser-needle" class="simulation-laser-needle" style="left: 20%;">
+              <div class="needle-glow-head"></div>
             </div>
-            <div id="task-backlog" class="task-backlog-container"></div>
+          </div>
+
+          <!-- Multi-Lane Tasks Timeline Surface -->
+          <div class="timeline-drop-hint">💡 Húzd a feladatokat az idősávok áthelyezéséhez, vagy vissza a dokkra!</div>
+          <div id="tasks-timeline" class="tasks-timeline" aria-label="Időzített feladatok">
+            <!-- Dynamically populated floating slot tasks -->
           </div>
         </section>
 
-        <!-- Right Sidebar -->
-        <aside class="stats-sidebar">
-          <div class="sidebar-card recommendation-card">
-            <div class="card-header"><span class="card-icon">🤖</span><h3 class="card-title">Cirkadián Tanácsadó</h3></div>
-            <p id="recommendation-text" class="recommendation-body">Optimális energiamérleg! A feladatok illeszkednek a ritmusodhoz.</p>
-          </div>
-
-          <div class="sidebar-card">
-            <div class="card-header"><span class="card-icon">⚡</span><h3 class="card-title">Cirkadián & Koffein Zónák</h3></div>
-            <div class="zone-stat-group">
-              <div class="zone-stat-item peak-border">
-                <div class="zone-stat-label">🚀 Fókusz Csúcsidőszakok</div>
-                <div id="stats-peak-hours" class="zone-stat-val">09:00 - 11:30 & 16:30 - 18:30</div>
-                <div class="zone-stat-sub">Mélymunka (Deep Work)</div>
-              </div>
-              <div class="zone-stat-item caffeine-border">
-                <div class="zone-stat-label">☕ Koffein Zóna & Cutoff</div>
-                <div id="stats-caffeine-window" class="zone-stat-val">08:30 - 14:00 (Cutoff: 14:00)</div>
-                <div id="stats-caffeine-sub" class="zone-stat-sub">CAR + mélyalvás védelem</div>
-              </div>
-              <div class="zone-stat-item dip-border">
-                <div class="zone-stat-label">🍲 Kaja-Kóma / Mélypont</div>
-                <div id="stats-dip-hours" class="zone-stat-val">13:30 - 15:00</div>
-                <div class="zone-stat-sub">Admin, rutin vagy pihenő</div>
-              </div>
+        <!-- Backlog Dock -->
+        <section class="backlog-dock-section" aria-label="Feladat Várakozósor">
+          <div class="backlog-header">
+            <div class="backlog-title-wrap">
+              <span class="backlog-icon">🎒</span>
+              <h3 class="backlog-title">Feladat Várakozósor (Backlog)</h3>
+              <span id="backlog-count" class="backlog-count">0 feladat</span>
             </div>
+            <span class="backlog-hint">⚡ Húzd át az idővonalra, vagy kattints a Zen Fókusz indításához!</span>
           </div>
-
-          <div class="sidebar-card">
-            <div class="card-header"><span class="card-icon">📊</span><h3 class="card-title">Napi Kapacitás Mérleg</h3></div>
-            <div class="metrics-grid">
-              <div class="metric-box"><span class="metric-label">Összkapacitás</span><span id="stats-capacity" class="metric-val text-cyan">--</span></div>
-              <div class="metric-box"><span class="metric-label">Tervezett Terhelés</span><span id="stats-scheduled-load" class="metric-val text-purple">--</span></div>
-              <div class="metric-box"><span class="metric-label">Energia Adósság</span><span id="stats-debt" class="metric-val text-mint">0.0</span></div>
-              <div class="metric-box"><span class="metric-label">Kimerültség</span><span id="stats-exhaustion" class="metric-val">0%</span></div>
-            </div>
-          </div>
-
-          <div class="sidebar-card load-legend-card">
-            <div class="card-header"><span class="card-icon">🏷️</span><h3 class="card-title">Terhelési Kategóriák</h3></div>
-            <div class="legend-pill-list">
-              <div class="legend-pill pill-deep"><span class="pill-badge">DEEP_WORK</span><span class="pill-desc">Költség: 8.5 | Fókuszcsúcs</span></div>
-              <div class="legend-pill pill-creative"><span class="pill-badge">CREATIVE</span><span class="pill-desc">Költség: 6.0 | Közepes</span></div>
-              <div class="legend-pill pill-admin"><span class="pill-badge">ADMIN</span><span class="pill-desc">Költség: 3.0 | Mélypont</span></div>
-              <div class="legend-pill pill-recovery"><span class="pill-badge">RECOVERY</span><span class="pill-desc">Költség: -3.0 | Töltődés</span></div>
-            </div>
-          </div>
-        </aside>
+          <div id="task-backlog" class="task-backlog-container"></div>
+        </section>
       </div>
+
+      <!-- Right Column: Advisor & Performance Metrics -->
+      <aside class="stats-sidebar" aria-label="Cirkadián Tanácsadó és Metrikák">
+        <div class="sidebar-card">
+          <div class="card-header"><span class="card-icon">🤖</span><h3 class="card-title">Cirkadián Tanácsadó</h3></div>
+          <p id="recommendation-text" class="recommendation-body">Optimális energiamérleg! A feladatok illeszkednek a ritmusodhoz.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="card-header"><span class="card-icon">⚡</span><h3 class="card-title">Cirkadián & Koffein Zónák</h3></div>
+          <div class="zone-stat-group">
+            <div class="zone-stat-item peak-border">
+              <div class="zone-stat-label">🚀 Fókusz Csúcsidőszakok</div>
+              <div id="stats-peak-hours" class="zone-stat-val">09:00 - 11:30 & 16:30 - 18:30</div>
+              <div class="zone-stat-sub">Mélymunka (Deep Work)</div>
+            </div>
+            <div class="zone-stat-item caffeine-border">
+              <div class="zone-stat-label">☕ Koffein Zóna & Cutoff</div>
+              <div id="stats-caffeine-window" class="zone-stat-val">08:30 - 14:00 (Cutoff: 14:00)</div>
+              <div id="stats-caffeine-sub" class="zone-stat-sub">CAR + mélyalvás védelem</div>
+            </div>
+            <div class="zone-stat-item dip-border">
+              <div class="zone-stat-label">🍲 Kaja-Kóma / Mélypont</div>
+              <div id="stats-dip-hours" class="zone-stat-val">13:30 - 15:00</div>
+              <div class="zone-stat-sub">Admin, rutin vagy pihenő</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="card-header"><span class="card-icon">📊</span><h3 class="card-title">Napi Kapacitás Mérleg</h3></div>
+          <div class="metrics-grid">
+            <div class="metric-box"><span class="metric-label">Összkapacitás</span><span id="stats-capacity" class="metric-val text-cyan">--</span></div>
+            <div class="metric-box"><span class="metric-label">Tervezett Terhelés</span><span id="stats-scheduled-load" class="metric-val text-purple">--</span></div>
+            <div class="metric-box"><span class="metric-label">Energia Adósság</span><span id="stats-debt" class="metric-val text-mint">0.0</span></div>
+            <div class="metric-box"><span class="metric-label">Kimerültség</span><span id="stats-exhaustion" class="metric-val">0%</span></div>
+          </div>
+        </div>
+
+        <div class="sidebar-card load-legend-card">
+          <div class="card-header"><span class="card-icon">🏷️</span><h3 class="card-title">Terhelési Kategóriák</h3></div>
+          <div class="legend-pill-list">
+            <div class="legend-pill pill-deep"><span class="pill-badge">DEEP_WORK</span><span class="pill-desc">Költség: 8.5 | Fókuszcsúcs</span></div>
+            <div class="legend-pill pill-creative"><span class="pill-badge">CREATIVE</span><span class="pill-desc">Költség: 6.0 | Közepes</span></div>
+            <div class="legend-pill pill-admin"><span class="pill-badge">ADMIN</span><span class="pill-desc">Költség: 3.0 | Mélypont</span></div>
+            <div class="legend-pill pill-recovery"><span class="pill-badge">RECOVERY</span><span class="pill-desc">Költség: -3.0 | Töltődés</span></div>
+          </div>
+        </div>
+      </aside>
     </main>
 
-    <!-- Circadian Profile Modal -->
-    <div id="profile-modal" class="modal-overlay hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true">
-      <div class="modal-card">
-        <div class="modal-header">
-          <h3 id="modal-title" class="modal-title">⚙️ Cirkadián Profil Beállítások</h3>
-          <button type="button" id="btn-close-modal" class="btn-close" aria-label="Bezárás">✕</button>
-        </div>
-        <form id="profile-form" class="modal-form">
-          <div class="form-row">
-            <div class="form-group"><label for="input-wake-time">🌅 Ébredés</label><input type="time" id="input-wake-time" value="07:00" required></div>
-            <div class="form-group"><label for="input-sleep-time">🌙 Alvás</label><input type="time" id="input-sleep-time" value="23:00" required></div>
-          </div>
-          <div class="form-divider"><span>Fókusz Csúcsidőszakok (Peak)</span></div>
-          <div class="form-row">
-            <div class="form-group"><label for="input-peak1-start">Délelőtt kezdete</label><input type="time" id="input-peak1-start" value="09:00" required></div>
-            <div class="form-group"><label for="input-peak1-end">Délelőtt vége</label><input type="time" id="input-peak1-end" value="11:30" required></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="input-peak2-start">Délután kezdete</label><input type="time" id="input-peak2-start" value="16:30" required></div>
-            <div class="form-group"><label for="input-peak2-end">Délután vége</label><input type="time" id="input-peak2-end" value="18:30" required></div>
-          </div>
-          <div class="form-divider"><span>Kaja-Kóma Mélypont (Dip)</span></div>
-          <div class="form-row">
-            <div class="form-group"><label for="input-dip-start">Mélypont kezdete</label><input type="time" id="input-dip-start" value="13:30" required></div>
-            <div class="form-group"><label for="input-dip-end">Mélypont vége</label><input type="time" id="input-dip-end" value="15:00" required></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="btn-cancel-modal" class="btn-secondary">Mégse</button>
-            <button type="submit" class="btn-primary">Mentés & Újraszámítás</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Zen Focus Modal (SPEC-003) -->
-    <div id="zen-focus-modal" class="modal-overlay zen-modal-overlay hidden" role="dialog" aria-labelledby="zen-task-title" aria-modal="true">
-      <div class="zen-modal-card">
-        <div class="zen-modal-header">
-          <div class="zen-status-badge">⚡ Zen Fókusz Mód</div>
-          <button type="button" id="btn-close-zen" class="btn-close" aria-label="Bezárás">✕</button>
-        </div>
-        <div class="zen-modal-body">
-          <h2 id="zen-task-title" class="zen-task-title">Feladat címe</h2>
-          <div class="zen-task-meta">
-            <span id="zen-task-load" class="zen-load-pill">🧠 DEEP_WORK</span>
-            <span id="zen-task-energy" class="zen-energy-pill">⚡ 8.5</span>
-          </div>
-          <div class="zen-timer-container">
-            <div id="zen-timer-circle" class="zen-timer-circle glow-circle">
-              <div class="zen-timer-inner">
-                <span id="zen-timer-display" class="zen-timer-display">25:00</span>
-                <span class="zen-timer-sub">Fókusz Blokkból Hátralévő</span>
-              </div>
-            </div>
-          </div>
-          <div class="zen-audio-section">
-            <button type="button" id="btn-toggle-zen-audio" class="btn-zen-audio"><span class="audio-icon">🎧</span><span class="audio-label">🎧 Barna Zaj / Alfa Binaural</span></button>
-            <span id="zen-audio-status" class="audio-status-text">Kikapcsolva</span>
-          </div>
-        </div>
-        <div class="zen-modal-footer">
-          <button type="button" id="btn-zen-complete" class="btn-primary btn-zen-action">✓ Befejezve & Újrahangolás</button>
+    <!-- Bottom Full-Width Telemetry Hub -->
+    <section class="bottom-telemetry-dock" aria-label="Biológiai Telemetria és Statisztika">
+      <div class="telemetry-card">
+        <div class="telemetry-header"><span class="telemetry-icon">🎯</span><span class="telemetry-title">Cirkadián Illeszkedés</span></div>
+        <div class="telemetry-body">
+          <span id="telemetry-alignment" class="telemetry-kpi text-cyan">94%</span>
+          <span class="telemetry-desc">Mélymunka a csúcsablakokban</span>
         </div>
       </div>
-    </div>
 
-    <!-- ICS Import Modal (SPEC-004) -->
-    <div id="ics-import-modal" class="modal-overlay hidden" role="dialog" aria-labelledby="import-modal-title" aria-modal="true">
-      <div class="modal-card">
-        <div class="modal-header">
-          <h3 id="import-modal-title" class="modal-title">📥 Naptár Import (.ics)</h3>
-          <button type="button" id="btn-close-import-modal" class="btn-close" aria-label="Bezárás">✕</button>
-        </div>
-        <div class="modal-form">
-          <div class="form-group">
-            <label for="ics-file-input">📂 .ics naptárfájl feltöltése:</label>
-            <input type="file" id="ics-file-input" accept=".ics,text/calendar">
-          </div>
-          <div class="form-divider"><span>VAGY másold be az iCalendar (.ics) szöveget</span></div>
-          <div class="form-group">
-            <textarea id="ics-text-input" rows="6" placeholder="BEGIN:VCALENDAR&#10;BEGIN:VEVENT&#10;SUMMARY:Értekezlet&#10;DTSTART:20260826T100000Z&#10;DTEND:20260826T110000Z&#10;END:VEVENT&#10;END:VCALENDAR" class="ics-textarea"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="btn-cancel-import" class="btn-secondary">Mégse</button>
-            <button type="button" id="btn-submit-import" class="btn-primary">Importálás & Fix Maszkolás</button>
-          </div>
+      <div class="telemetry-card">
+        <div class="telemetry-header"><span class="telemetry-icon">⏳</span><span class="telemetry-title">Koffein Cutoff Visszaszámláló</span></div>
+        <div class="telemetry-body">
+          <span id="telemetry-caffeine-time" class="telemetry-kpi text-gold">14:00</span>
+          <span id="telemetry-caffeine-status" class="telemetry-desc">Alvásvédelem: Aktív</span>
         </div>
       </div>
-    </div>
 
-    <!-- Shutdown Ritual Modal (SPEC-004) -->
-    <div id="shutdown-ritual-modal" class="modal-overlay shutdown-modal-overlay hidden" role="dialog" aria-labelledby="shutdown-modal-title" aria-modal="true">
-      <div class="modal-card shutdown-card">
-        <div class="modal-header">
-          <div class="shutdown-badge">🌙 Cirkadián Napi Lezárás (Shutdown Ritual)</div>
-          <button type="button" id="btn-close-shutdown" class="btn-close" aria-label="Bezárás">✕</button>
-        </div>
-        <div class="shutdown-body">
-          <div class="shutdown-stats-grid">
-            <div class="shutdown-stat-box"><span class="shutdown-stat-label">Befejezett</span><span id="shutdown-completed-count" class="shutdown-stat-val text-mint">0</span></div>
-            <div class="shutdown-stat-box"><span class="shutdown-stat-label">Függőben</span><span id="shutdown-pending-count" class="shutdown-stat-val text-purple">0</span></div>
-            <div class="shutdown-stat-box"><span class="shutdown-stat-label">Mélymunka</span><span id="shutdown-deepwork-min" class="shutdown-stat-val text-cyan">0 perc</span></div>
-            <div class="shutdown-stat-box"><span class="shutdown-stat-label">Melatonin Kapu</span><span id="shutdown-melatonin-gate" class="shutdown-stat-val text-gold">--:--</span></div>
-          </div>
-          <div id="shutdown-melatonin-countdown" class="shutdown-countdown-banner">
-            <span id="shutdown-countdown-text">⏳ Melatonin Kapuig: -- perc</span>
-          </div>
-          <div class="shutdown-section">
-            <h4 class="shutdown-subtitle">📋 Befejezetlen feladatok (Átütemezendő):</h4>
-            <div id="shutdown-pending-list" class="shutdown-task-list"></div>
-          </div>
-          <div class="shutdown-section">
-            <h4 class="shutdown-subtitle">💡 Cirkadián Tanácsok & Másnapi Fókuszcsúcs:</h4>
-            <ul id="shutdown-recommendations" class="shutdown-rec-list"></ul>
-          </div>
-        </div>
-        <div class="modal-footer shutdown-footer">
-          <button type="button" id="btn-complete-shutdown" class="btn-primary btn-complete-shutdown">
-            ✓ Munkanap Lezárva (Jó pihenést!)
-          </button>
+      <div class="telemetry-card">
+        <div class="telemetry-header"><span class="telemetry-icon">🌙</span><span class="telemetry-title">Melatonin Kapu</span></div>
+        <div class="telemetry-body">
+          <span id="telemetry-melatonin-gate" class="telemetry-kpi text-purple">21:30</span>
+          <span id="telemetry-melatonin-countdown" class="telemetry-desc">Lefekvésig optimális</span>
         </div>
       </div>
-    </div>
 
-    <!-- Toast Notification -->
-    <div id="toast-container" class="toast-container"></div>
+      <div class="telemetry-card">
+        <div class="telemetry-header"><span class="telemetry-icon">🔄</span><span class="telemetry-title">Ultradián 90/20 Ciklusok</span></div>
+        <div class="telemetry-body">
+          <span id="telemetry-ultradian-count" class="telemetry-kpi text-mint">3 Teljes Ciklus</span>
+          <span class="telemetry-desc">BRAC bioritmus egyensúly</span>
+        </div>
+      </div>
+
+      <div class="telemetry-card">
+        <div class="telemetry-header"><span class="telemetry-icon">🛡️</span><span class="telemetry-title">Dopamin & Fókuszvédelem</span></div>
+        <div class="telemetry-body">
+          <span id="telemetry-dopamine-guard" class="telemetry-kpi text-cyan">98% Stabilitás</span>
+          <span class="telemetry-desc">Kognitív fragmentáció védelem</span>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <script src="/app.js" defer></script>
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Modals -->
+  <div id="profile-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">⚙ Cirkadián Kronotípus Beállítása</h3>
+        <button type="button" id="btn-close-modal" class="btn-close">✕</button>
+      </div>
+      <form id="profile-form" class="profile-form">
+        <div class="form-row">
+          <div class="form-group"><label>Ébredés ideje</label><input type="time" id="input-wake-time" value="07:00" required /></div>
+          <div class="form-group"><label>Lefekvés ideje</label><input type="time" id="input-sleep-time" value="23:00" required /></div>
+        </div>
+        <div class="form-group"><label>Délelőtti Csúcs</label><div class="form-row"><input type="time" id="input-peak1-start" value="09:00" /><input type="time" id="input-peak1-end" value="11:30" /></div></div>
+        <div class="form-group"><label>Délutáni Csúcs</label><div class="form-row"><input type="time" id="input-peak2-start" value="16:30" /><input type="time" id="input-peak2-end" value="18:30" /></div></div>
+        <div class="form-group"><label>Délutáni Mélypont</label><div class="form-row"><input type="time" id="input-dip-start" value="13:30" /><input type="time" id="input-dip-end" value="15:00" /></div></div>
+        <div class="modal-actions">
+          <button type="button" id="btn-cancel-modal" class="btn btn-secondary">Mégse</button>
+          <button type="submit" class="btn btn-primary">💾 Mentés</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Zen Focus Modal -->
+  <div id="zen-focus-modal" class="modal-overlay hidden">
+    <div class="modal-card zen-card">
+      <div class="modal-header">
+        <h3 class="modal-title">🧠 Zen Fókusz Mód</h3>
+        <button type="button" id="btn-close-zen" class="btn-close">✕</button>
+      </div>
+      <div class="zen-body">
+        <div id="zen-task-title" class="zen-task-title">Kódolás: új auth modul</div>
+        <div class="zen-meta-row">
+          <span id="zen-task-load" class="badge-zen-load">MÉLYMUNKA</span>
+          <span id="zen-task-energy" class="badge-zen-energy">⚡ 8.5</span>
+        </div>
+        <div id="zen-timer-display" class="zen-timer-display">25:00</div>
+        <div class="zen-audio-bar">
+          <button type="button" id="btn-toggle-zen-audio" class="btn btn-secondary">🎵 Barna Zaj & 10Hz Alfa Hangtáj</button>
+          <span id="zen-audio-status" class="zen-audio-status">Kikapcsolva</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="btn-zen-complete" class="btn btn-primary glow-cyan">✓ Kész, Újrahangolás!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shutdown Ritual Modal -->
+  <div id="shutdown-ritual-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">🌙 Esti Lezárási Rituálé & Alvásfelkészítés</h3>
+        <button type="button" id="btn-close-shutdown" class="btn-close">✕</button>
+      </div>
+      <div class="modal-body" id="shutdown-modal-content">
+        <p>Töltés...</p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="btn-confirm-shutdown" class="btn btn-primary glow-cyan">✓ Nap Befejezése & Pihenés</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ICS Import Modal -->
+  <div id="ics-import-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">📥 Naptár Importálása (.ics)</h3>
+        <button type="button" id="btn-close-import" class="btn-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="ics-import-content" rows="6" placeholder="Illeszd be az iCalendar (.ics) fájl tartalmát ide..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="btn-submit-import" class="btn btn-primary">📥 Importálás & Rögzítés</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

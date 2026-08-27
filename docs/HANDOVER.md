@@ -1,7 +1,7 @@
 # EnergyCalendar — Teljes Ügynök Átadási Dokumentáció (Agent Handover Guide)
 
-> **Verzió:** v1.2.0 (2026-08-26)  
-> **Állapot:** 100% Zöld (76/76 teszt PASSED), Üzemkész, GitHubra feltöltve  
+> **Verzió:** v1.6.0 (2026-08-27)  
+> **Állapot:** 100% Zöld (123/123 teszt PASSED), Üzemkész, Időgép HUD & Multi-Lane Ergonómia  
 > **Cél:** Teljes kontextusátadás bármely bejövő AI kódoló/architekt ügynöknek (Hermes, Claude, GPT, Codex, Gemini, Antigravity).
 
 ---
@@ -10,15 +10,17 @@
 
 Az **Energia-Ritmus & Heti Rutin-Koreográfus (EnergyCalendar)** egy olyan intelligens időszervező és naptárplatform, amely a naptári napot nem üres, merev óradobozokként, hanem a felhasználó **biológiai cirkadián energiaszintjeként ($E_{cap}(t)$)** kezeli.
 
-### Fő Értékajánlatok:
-1. **Biológiai Illesztés:** A nehéz, mély fókuszú munkát (`DEEP_WORK`) a természetes dopamin- és fókuszcsúcsokra (pl. 09:00–11:30 és 16:30–18:30) szervezi, a mechanikus feladatokat (`ADMIN`) a délutáni "kaja-kóma" mélypontra (13:30–15:00) helyezi.
-2. **Kognitív Zuhanás & Kiégés Védelem:** Automatikus 20–30 perces regenerációs (`RECOVERY`) szüneteket iktat be 120 perc folyamatos mélymunka után, valamint valós idejű `Energy Debt` figyelmeztetést ad túlterhelés esetén.
-3. **Koffein Zóna & Alvásvédelem (Biohacking):** 90 perces Cortisol Awakening Response (CAR) késleltetés reggel és 9 órás lefekvés előtti koffein-stop határvonal.
-4. **Dinamikus Ripple Re-flow:** 1-kattintásos elcsúszás-kezelő: a pillanatnyi időponttól ($t_{now}$) kezdve újraszervezi a hátralévő napot bűntudat nélkül.
-5. **Kétirányú Naptár-Interoperabilitás:** RFC 5545 szabványos `.ics` naptár export és import, amely a külső meetingeket automatikusan fix sávokként maszkolja a naptár-ütközések megelőzésére.
-6. **AI Feladat-Dekompozíció:** A 60 percnél hosszabb feladatokat automatikusan 3 logikus fázisra (Kreatív előkészítés $\rightarrow$ Mély kivitelezés $\rightarrow$ Admin review) bontja.
-7. **Napi Lezárási Rituálé (Daily Shutdown):** Feloldja a Zeigarnik-effektust, összegzi a napi sikereket, és visszaszámol az esti Melatonin Kapuig ($t_{sleep} - 60\text{m}$).
-8. **Zavarmentes Zen Fókusz Szoba:** Natív Web Audio szintetizátorral előállított Barna Zaj (Brownian noise) és 10Hz Alfa Binaural Beats azonnali fókuszjavításhoz (0 külső függőség).
+### Fő Értékajánlatok (v1.6.0):
+1. **Cirkadián Időgép HUD & Lézerszálas Szimuláció:** Valós idejű telemetria, nap-lejátszó motor, élő szkennelés és zónaváltó kristálycsengő.
+2. **Multi-Lane Felület & Lebegő Kártyák:** Tiszta, átfedésmentes feladatmegjelenítés és kétirányú Drag & Drop.
+3. **Ergonómiai Csoportosított Ribbon:** Tematikus műveleti gombok (Akciók, Biohack Modulok, Vitalitás csúszka).
+4. **Biolumineszcens Telemetria Hub:** KPI mutatók, Alignment score, Koffein és Melatonin visszaszámlálók.
+5. **Kontextusváltási Adósság & Batching:** Fragmentation Tax kalkuláció és intelligens kognitív csoportosítás.
+6. **Web Audio Szintetizált Hangtájak & Neuro-Chimes:** 40Hz Gamma fókusz, 6Hz Theta és diszkrét zónaváltó hangjelzések.
+7. **Cirkadián Időzóna & Jetlag Protokoll:** Többnapos alvásfázis-eltolási ütemterv és fototerápia.
+8. **ADHD NeuroFlow & Biophilic Tér Audit:** Idővakság védelem és CO2 / hőmérséklet hatásvizsgálat.
+9. **Cirkadián Edzés & Meeting Puffer:** Hormézis ablakok és 15 perces dekompressziós sávok.
+10. **Biometrikus & 7 Napos Makro-Ritmus:** Oura/Whoop HRV szinkron, heti terheléssimítás és kiégés predikció.
 
 ---
 

@@ -43,6 +43,54 @@
       "adr_path": "docs/decisions/ADR-003-shutdown-calendar-deconstruction.md",
       "research_path": "docs/competitor/2026-W35-circadian-productivity-scan.md",
       "last_updated": "2026-08-26T18:40:00Z"
+    },
+    "SPEC-005": {
+      "title": "10 Új Cirkadián, Biometrikus és Kognitív Architektúra Modul (v1.3.0)",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-005-ten-circadian-advancements.md",
+      "story_path": "docs/stories/US-004-circadian-power-evolution.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_005_advanced_evolution.py",
+      "adr_path": "docs/decisions/ADR-004-ten-circadian-advancements.md",
+      "research_path": "docs/research/2026-08-26-ten-circadian-advancements.md",
+      "last_updated": "2026-08-26T21:00:00Z"
+    },
+    "SPEC-006": {
+      "title": "10 Piaci & Felhasználói Igény Alapú Cirkadián Funkció (v1.4.0)",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-006-market-driven-features.md",
+      "story_path": "docs/stories/US-005-market-driven-features.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_006_market_suite.py",
+      "adr_path": "docs/decisions/ADR-005-market-driven-circadian-suite.md",
+      "research_path": "docs/competitor/2026-W35-circadian-market-scan.md",
+      "last_updated": "2026-08-26T21:30:00Z"
     }
+  ,
+    "SPEC-007": {
+      "title": "Cirkadián Időgép Szimulációs Motor és Heti Makro Ütemezés (v1.5.0)",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-007-simulation-and-multiday-macro.md",
+      "story_path": "docs/stories/US-006-simulation-and-multiday-macro.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_007_simulation_macro.py",
+      "adr_path": "docs/decisions/ADR-006-simulation-and-multiday-macro.md",
+      "research_path": "docs/research/2026-08-26-circadian-energy-calendar-deep-dive.md",
+      "last_updated": "2026-08-27T00:30:00Z"
+    }
+
+  ,
+    "SPEC-008": {
+      "title": "Cirkadián Időgép HUD, Multi-Lane Idővonal és Ergonómiai Csomag (v1.6.0)",
+      "status": "COMPLETED",
+      "retry_count": 0,
+      "spec_path": ".agent-pipeline/02_specs/done/SPEC-008-time-machine-hud-and-ergonomics.md",
+      "story_path": "docs/stories/US-007-time-machine-hud-and-ergonomics.md",
+      "e2e_test_path": ".agent-pipeline/03_e2e_suites/test_e2e_008_timemachine.py",
+      "adr_path": "docs/decisions/ADR-007-time-machine-hud-and-ergonomics.md",
+      "research_path": "docs/research/2026-08-26-circadian-energy-calendar-deep-dive.md",
+      "last_updated": "2026-08-27T00:45:00Z"
+    }
+
   }
 }

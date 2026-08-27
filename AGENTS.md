@@ -3,13 +3,13 @@
 > Ezt olvassa minden AI Agent belépéskor (Hermes, Gemini CLI, Claude, Codex, Antigravity, GPT...). Rövid eligazítás — 30 sor.
 
 ## Mi ez
-**EnergyCalendar (Energia-Ritmus & Heti Rutin-Koreográfus)** — Biológiai cirkadián ritmusra és kognitív terhelésre optimalizált feladat- és időszervező rendszer (v1.2.0). 
+**EnergyCalendar (Energia-Ritmus & Heti Rutin-Koreográfus)** — Biológiai cirkadián ritmusra és kognitív terhelésre optimalizált feladat- és időszervező rendszer (v1.6.0). 
 - **Stack:** Python 3.11+ (FastAPI, Pydantic v2, Uvicorn), Modern Vanilla JS + Canvas + Web Audio API SPA (0 külső JS függőség), Pytest + Playwright.
 
-## Jelenlegi Állapot (v1.2.0)
-- **76/76 teszt zöld (100% PASS):** 20 Black-Box E2E teszt + 56 Unit teszt.
+## Jelenlegi Állapot (v1.6.0)
+- **123/123 teszt zöld (100% PASS):** 43 Black-Box E2E teszt + 80 Unit teszt.
 - **Élő szerver:** `http://127.0.0.1:8888` (Swagger: `/docs`).
-- **Pipeline:** `.agent-pipeline/` (SPEC-001..004 lezárva a `manifest.json`-ban).
+- **Pipeline:** `.agent-pipeline/` (SPEC-001..008 lezárva a `manifest.json`-ban).
 
 ## Hol mi van
 - `docs/HANDOVER.md` — **Teljes átadási dokumentáció, modulok leírása és következő feladatok (Start here!)**
